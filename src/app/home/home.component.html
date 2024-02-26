@@ -1,0 +1,81 @@
+<div class="container">
+  <h2>Filtres</h2>
+  <div>
+    <label>Auteur:</label>
+    <ul>
+      <li><button [class.selected]="selectedAuteurId === 1" (click)="setFilter('auteur', 1)">Auteur 1</button></li>
+      <li><button [class.selected]="selectedAuteurId === 2" (click)="setFilter('auteur', 2)">Auteur 2</button></li>
+      <!-- Répétez pour d'autres auteurs -->
+    </ul>
+  </div>
+
+  <div>
+    <label>Catégorie:</label>
+    <ul>
+      <li><button [class.selected]="selectedCategorieId === 1" (click)="setFilter('categorie', 1)">Catégorie 1</button></li>
+      <li><button [class.selected]="selectedCategorieId === 2" (click)="setFilter('categorie', 2)">Catégorie 2</button></li>
+      <!-- Répétez pour d'autres catégories -->
+    </ul>
+  </div>
+
+
+  <div>
+    <label>Emplacement:</label>
+    <ul>
+      <li><button  [class.selected]="selectedEmplacement === 'Étagère A'"  (click)="setFilter('emplacement', 'Étagère A')">Étagère A</button></li>
+      <li><button  [class.selected]="selectedEmplacement === 'Étagère B'"  (click)="setFilter('emplacement', 'Étagère B')">Étagère B</button></li>
+      <!-- Répétez pour d'autres emplacements -->
+    </ul>
+  </div>
+
+  <div>
+    <label>Disponible:</label>
+    <ul>
+      <li><button [class.selected]="selectedDisponibleId === 1" (click)="setFilter('disponible', 1)">Oui</button></li>
+      <li><button [class.selected]="selectedDisponibleId === 2" (click)="setFilter('disponible', 0)">Non</button></li>
+    </ul>
+  </div>
+
+
+  <div>
+  <label>État:</label>
+  <ul>
+    <li><button [class.selected]="selectedEtatId === 1" (click)="setFilter('etat', 1)">Neuf</button></li>
+    <li><button [class.selected]="selectedEtatId === 2" (click)="setFilter('etat', 2)">Ok</button></li>
+    <li><button [class.selected]="selectedEtatId === 3" (click)="setFilter('etat', 3)">À changer</button></li>
+  </ul>
+</div>
+
+<button (click)="resetFilters()">Réinitialiser les filtres</button>
+
+  <h2>Liste des Livres</h2>
+  <div *ngIf="filteredBooks.length > 0; else noResults">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Titre</th>
+        <th>Auteur</th>
+        <th>Catégorie</th>
+        <th>Emplacement</th>
+        <th>Etat</th>
+        <th>Disponible</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let book of filteredBooks">
+        <td>{{ book.livreId }}</td>
+        <td>{{ book.titre }}</td>
+        <td>{{ book.auteurId }}</td>
+        <td>{{ book.categorieId }}</td>
+        <td>{{ book.emplacement }}</td>
+        <td>{{ book.etatId }}</td>
+        <td>{{ book.disponibleId }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #noResults>
+    <div>Aucun livre ne correspond à vos critères de recherche.</div>
+  </ng-template>
+</div>

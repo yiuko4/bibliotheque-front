@@ -1,0 +1,16 @@
+[
+  {
+    "livreId": 1,
+    "auteurId": 1,
+    "categorieId": 1,
+    "titre": "Le Petit Prince",
+    "emplacement": "Étagère A"
+  },
+  {
+    "livreId": 2,
+    "auteurId": 2,
+    "categorieId": 2,
+    "titre": "1984",
+    "emplacement": "Étagère B"
+  }
+]

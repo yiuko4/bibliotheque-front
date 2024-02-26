@@ -1,0 +1,20 @@
+header nav {
+  background-color: #343a40;
+  color: white;
+}
+
+header nav ul {
+  list-style-type: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+header nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+}
