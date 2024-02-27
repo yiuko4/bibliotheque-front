@@ -1,4 +1,100 @@
 .selected {
-  background-color: #007bff; /* Bleu Bootstrap par exemple */
+  background-color: #007bff;
   color: white;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sidebar {
+  flex: 0 0 30%;
+  max-width: 30%;
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+  padding-right: 20px;
+}
+
+.content {
+  flex: 1;
+  margin-left: 30%;
+  padding: 20px;
+}
+
+.selected {
+  background-color: #007bff;
+  color: white;
+}
+
+
+/* Styles généraux pour la barre latérale */
+.sidebar {
+  background-color: #f8f9fa; /* Couleur de fond légère pour la barre latérale */
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre douce pour la profondeur */
+}
+
+/* Styles pour les labels des filtres */
+.sidebar label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Styles pour les listes */
+.sidebar ul {
+  list-style: none; /* Enlève les puces */
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+/* Styles pour les boutons de filtres */
+.sidebar button {
+  background-color: #e9ecef; /* Couleur de fond pour les boutons non-sélectionnés */
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.25rem;
+  width: 100%; /* Assure une largeur uniforme */
+  text-align: left;
+  transition: background-color 0.3s ease; /* Transition pour l'interaction */
+}
+
+/* Styles pour les boutons de filtres lors du survol */
+.sidebar button:hover {
+  background-color: #ddeeff; /* Couleur de fond au survol */
+}
+
+/* Styles pour les boutons de filtres sélectionnés */
+.sidebar button.selected {
+  background-color: #007bff; /* Couleur de fond pour les boutons sélectionnés */
+  color: white;
+  border-color: #0056b3;
+}
+
+/* Styles pour le bouton de réinitialisation des filtres */
+button.reset-filters {
+  background-color: #6c757d;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  margin-top: 1rem;
+}
+
+button.reset-filters:hover {
+  background-color: #5a6268;
+}
+
+/* Media Query pour les écrans plus petits */
+@media (max-width: 768px) {
+  .sidebar {
+    position: static;
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
+  .content {
+    margin-left: 0;
+  }
 }

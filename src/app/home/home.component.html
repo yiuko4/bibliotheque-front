@@ -1,4 +1,5 @@
 <div class="container">
+  <div class="sidebar">
   <h2>Filtres</h2>
   <div>
     <label>Auteur:</label>
@@ -45,9 +46,12 @@
     <li><button [class.selected]="selectedEtatId === 3" (click)="setFilter('etat', 3)">À changer</button></li>
   </ul>
 </div>
-
 <button (click)="resetFilters()">Réinitialiser les filtres</button>
+</div>
 
+
+
+  <div class="content">
   <h2>Liste des Livres</h2>
   <div *ngIf="filteredBooks.length > 0; else noResults">
     <table class="table">
@@ -78,4 +82,5 @@
   <ng-template #noResults>
     <div>Aucun livre ne correspond à vos critères de recherche.</div>
   </ng-template>
+</div>
 </div>
