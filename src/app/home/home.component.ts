@@ -21,6 +21,7 @@ export class HomeComponent {
     { livreId: 4, auteurId: 1, categorieId: 2, titre: "Les Misérables", emplacement: "Étagère B" , etatId : 2 , disponibleId: 0},
     { livreId: 5, auteurId: 4, categorieId: 3, titre: "La Peste", emplacement: "Étagère C" , etatId : 3 , disponibleId: 1},
   ];
+
   filteredBooks: Livre[] = [];
   selectedAuteurId: number | '' = '';
   selectedCategorieId: number | '' = '';
@@ -29,7 +30,7 @@ export class HomeComponent {
   selectedDisponibleId: number | '' = '';
 
   constructor() {
-    this.filteredBooks = this.books; // Au début, afficher tous les livres
+    this.filteredBooks = this.books;
   }
 
   applyFilters() {

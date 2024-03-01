@@ -1,1 +1,12 @@
-<p>user works!</p>
+<!-- user.component.html -->
+<div *ngIf="user">
+  <h2>Utilisateur Détails</h2>
+  <p>Nom: {{ user.nom }}</p>
+  <p>Prénom: {{ user.prenom }}</p>
+  <p>Email: {{ user.email }}</p>
+  <p>Adresse : {{ user.adresse }}</p>
+  <p>Ville : {{ user.ville }}</p>
+  <p>Code Postal : {{ user.codePostal }}</p>
+  <p>Nombre d'emprunt : {{ user.nbEmprunts }}</p>
+  <p>Nombre de retard : {{ user.nbRetard }}</p>
+</div>
