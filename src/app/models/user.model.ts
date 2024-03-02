@@ -1,5 +1,5 @@
 export interface User {
-  utilisateurId: number;
+  utilisateurId?: number; // Rend cette propriété optionnelle
   nom: string;
   prenom: string;
   motDePasse: string;
@@ -9,4 +9,5 @@ export interface User {
   codePostal: string;
   nbEmprunts: number;
   nbRetard: number;
+
 }

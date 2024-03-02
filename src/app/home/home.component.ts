@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgForOf, NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
+import {BookService} from "../services/books/book.service";
+import {Book} from "../models/book.model";
 
 @Component({
   selector: 'app-home',
@@ -13,24 +15,30 @@ import {FormsModule} from "@angular/forms";
   ],
   standalone: true
 })
-export class HomeComponent {
-  books: Livre[] = [
-    { livreId: 1, auteurId: 1, categorieId: 1, titre: "Le Petit Prince", emplacement: "Étagère A", etatId : 1 , disponibleId: 1},
-    { livreId: 2, auteurId: 2, categorieId: 2, titre: "1984", emplacement: "Étagère B" , etatId : 1 , disponibleId: 1},
-    { livreId: 3, auteurId: 3, categorieId: 1, titre: "L'Étranger", emplacement: "Étagère A" , etatId : 3 , disponibleId: 0},
-    { livreId: 4, auteurId: 1, categorieId: 2, titre: "Les Misérables", emplacement: "Étagère B" , etatId : 2 , disponibleId: 0},
-    { livreId: 5, auteurId: 4, categorieId: 3, titre: "La Peste", emplacement: "Étagère C" , etatId : 3 , disponibleId: 1},
-  ];
-
-  filteredBooks: Livre[] = [];
+export class HomeComponent implements OnInit {
+  books: Book[] = [];
+  filteredBooks: Book[] = [];
   selectedAuteurId: number | '' = '';
   selectedCategorieId: number | '' = '';
-  selectedEmplacement: string  = '';
+  selectedEmplacement: string = '';
   selectedEtatId: number | '' = '';
   selectedDisponibleId: number | '' = '';
 
-  constructor() {
-    this.filteredBooks = this.books;
+  constructor(private bookService: BookService) {
+  }
+
+  ngOnInit() {
+    this.loadBooks();
+  }
+
+  loadBooks() {
+    this.bookService.getAllBooks().subscribe({
+      next: (data) => {
+        this.books = data;
+        this.filteredBooks = data;
+      },
+      error: (error) => console.error('Erreur lors de la récupération des livres:', error)
+    });
   }
 
   applyFilters() {
@@ -80,14 +88,3 @@ export class HomeComponent {
   protected readonly dispatchEvent = dispatchEvent;
 }
 
-
-
-interface Livre {
-  livreId: number;
-  auteurId: number;
-  categorieId: number;
-  titre: string;
-  emplacement: string;
-  etatId: number;
-  disponibleId : number;
-}

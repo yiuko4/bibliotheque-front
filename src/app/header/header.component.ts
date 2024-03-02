@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
-import {RouterLink} from "@angular/router";
+import { RouterLink } from "@angular/router";
+import {SearchService} from "../services/search/search.service";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [
-    RouterLink
-  ],
+  imports: [RouterLink, FormsModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  constructor(private searchService: SearchService) {}
 
 }
