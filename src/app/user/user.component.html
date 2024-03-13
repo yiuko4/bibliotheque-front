@@ -1,12 +1,33 @@
-<!-- user.component.html -->
-<div *ngIf="user">
-  <h2>Utilisateur Détails</h2>
-  <p>Nom: {{ user.nom }}</p>
-  <p>Prénom: {{ user.prenom }}</p>
-  <p>Email: {{ user.email }}</p>
-  <p>Adresse : {{ user.adresse }}</p>
-  <p>Ville : {{ user.ville }}</p>
-  <p>Code Postal : {{ user.codePostal }}</p>
-  <p>Nombre d'emprunt : {{ user.nbEmprunts }}</p>
-  <p>Nombre de retard : {{ user.nbRetard }}</p>
+<div *ngIf="user" class="container mt-5">
+  <h2 class="mb-4">Informations de l'Utilisateur</h2>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{ user.nom }} {{ user.prenom }}</h5>
+      <p class="card-text"><strong>Email :</strong> {{ user.email }}</p>
+      <p class="card-text"><strong>Ville :</strong> {{ user.ville }}</p>
+      <p class="card-text"><strong>Adresse :</strong> {{ user.adresse }}</p>
+      <p class="card-text"><strong>Code Postal :</strong> {{ user.codePostal }}</p>
+    </div>
+  </div>
+
+  <h3 class="mt-5 mb-3">Livres Empruntés</h3>
+  <div *ngIf="emprunts && emprunts.length > 0; else noBooks">
+    <ul class="list-group">
+      <li *ngFor="let emprunt of emprunts" class="list-group-item">
+        <h5 class="mb-1">{{ emprunt.titre }}</h5>
+        <!--<p class="mb-1"><strong>Date d'emprunt :</strong> {{ emprunt.dateEmprunt | date }}</p>
+        <p class="mb-1"><strong>Date retour prévue :</strong> {{ emprunt.dateRetourPrevue | date }}</p>
+        <p *ngIf="emprunt.dateRetourEffectif" class="mb-1"><strong>Date retour effectif :</strong> {{ emprunt.dateRetourEffectif | date }}</p>-->
+        <p class="mb-1"><strong>Emplacement :</strong> {{ emprunt.emplacement }}</p>
+        <button type="button" class="btn btn-warning btn-sm" (click)="retournerLivre(emprunt['empruntId'])">Retourner le livre</button>
+
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="confirmationMessage" class="alert alert-success" role="alert">
+    {{ confirmationMessage }}
+  </div>
+  <ng-template #noBooks>
+    <div class="alert alert-info">Aucun livre emprunté pour le moment.</div>
+  </ng-template>
 </div>

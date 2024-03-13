@@ -1,1 +1,27 @@
-<p>book works!</p>
+<!-- book.component.html -->
+
+<div *ngIf="book" class="container mt-4">
+  <h2 class="mb-3">{{ book.titre }}</h2>
+  <p><strong>Emplacement:</strong> {{ book.emplacement }}</p>
+  <p><strong>Auteur ID:</strong> {{ book.auteurId }}</p>
+  <p><strong>Catégorie ID:</strong> {{ book.categorieId }}</p>
+
+
+  <div *ngIf="!formSubmitted">
+    <input type="text" class="form-control mt-3" placeholder="Rechercher un utilisateur" [(ngModel)]="searchQuery" (input)="searchUser()">
+
+    <ul *ngIf="foundUsers.length" class="list-group">
+      <li *ngFor="let user of foundUsers" [class.active]="user.utilisateurId === selectedUserId" class="list-group-item list-group-item-action" (click)="selectUser(user.utilisateurId)">
+        {{ user.nom }}
+      </li>
+
+    </ul>
+    <button (click)="emprunterLivre()" [disabled]="!selectedUserId" class="btn btn-primary mt-3">Emprunter Livre</button>
+
+    <p *ngIf="selectedUserId" class="text-success mt-2">Utilisateur sélectionné : {{ selectedUserName }}</p>
+    <p *ngIf="message" class="alert alert-danger mt-2">{{ message }}</p>
+  </div>
+  <div *ngIf="formSubmitted" class="alert alert-success" role="alert">
+    Le livre à été emprunter avec succès. Vous allez être redirigé vers la page d'accueil.
+  </div>
+</div>

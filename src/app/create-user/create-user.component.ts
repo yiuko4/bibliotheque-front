@@ -1,15 +1,21 @@
 import { Component } from '@angular/core';
-import { UserService } from "../services/users/user.service";
 import {User} from "../models/user.model";
+import {UserService} from "../services/users/user.service";
+import {FormsModule} from "@angular/forms";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-create-user',
+  standalone: true,
+  imports: [
+    FormsModule,
+    NgIf
+  ],
   templateUrl: './create-user.component.html',
-  styleUrls: ['./create-user.component.css'],
-
+  styleUrl: './create-user.component.css'
 })
 export class CreateUserComponent {
-  newUser: User = {
+  user: User = {
     nom: '',
     prenom: '',
     email: '',
@@ -21,12 +27,32 @@ export class CreateUserComponent {
     nbRetard: 0
   };
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+  ) { }
+
+  message: string = '';
+  formSubmitted = false; // Contrôle l'affichage du formulaire
 
   onSubmit() {
-    this.userService.createUser(this.newUser).subscribe({
-      next: (user) => console.log('Utilisateur créé', user),
-      error: (error) => console.error('Erreur lors de la création de l’utilisateur', error)
+    console.log(this.user);
+    this.userService.createUser(this.user).subscribe({
+      next: (user: any) => {
+        console.log('Utilisateur créé :', user);
+        this.formSubmitted = true;
+        // Attendre quelques secondes avant de rediriger
+        setTimeout(() => {
+          this.redirectToHome();
+        }, 3000); // Redirige après 3 secondes
+      },
+      error: (error: any) => {
+        console.error('Erreur lors de la création de l’utilisateur :', error);
+        this.message = "Erreur lors de la création de l’utilisateur.";
+      }
     });
+  }
+
+  redirectToHome() {
+    window.location.href = '/home'; // Redirige vers la page d'accueil, ajustez si nécessaire
   }
 }

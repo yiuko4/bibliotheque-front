@@ -18,7 +18,21 @@ export class BookService {
     return this.http.get<Book[]>(`${this.apiUrl}/recupListeLivres`);
   }
 
+  getBooksByName(title: string): Observable<Book[]> {
+    return this.http.get<Book[]>(`${this.apiUrl}/rechercherLivres?titre=${title}`);
+  }
+  getBookById(id: number): Observable<Book> {
+    // Notez que nous attendons un seul livre ici, donc le type retourné est Book et non Book[]
+    return this.http.get<Book>(`${this.apiUrl}/recupInfoLivre?livreId=${id}`);
+  }
   getBooksById(id: number): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.apiUrl}/recupListeLivres`);
   }
+
+  emprunterLivre(utilisateurId: number | null, livreId: number): Observable<any> {
+    const body = { utilisateurId: utilisateurId, livreId: livreId };
+    return this.http.post(`${this.apiUrl}/empruntLivre`, body);
+  }
+
+
 }

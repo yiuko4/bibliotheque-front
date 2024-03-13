@@ -2,36 +2,72 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from "../models/user.model";
 import { UserService } from "../services/users/user.service";
-import { NgIf } from "@angular/common";
+import {DatePipe, NgForOf, NgIf} from "@angular/common";
+import {Book} from "../models/book.model";
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   standalone: true,
-  imports: [NgIf],
+  imports: [NgIf, NgForOf, DatePipe],
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  user?: User;
+  user: User | null = null;
+  emprunts: Book[] = [];
 
-  constructor(private route: ActivatedRoute, private userService: UserService) {
-  }
+  constructor(
+    private userService: UserService,
+    private route: ActivatedRoute,
+  ) {}
+  confirmationMessage: string = '';
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      const userId = params.get('id'); // Assure-toi que 'id' correspond au nom de ton paramètre défini dans les routes
-
+      const userId = params.get('id');
       if (userId) {
-        this.userService.getUserById(+userId).subscribe((data: User[]) => { // Note que j'ai changé le type à User[]
-          if (data.length > 0) {
-            this.user = data[0]; // Prends le premier utilisateur du tableau
-            console.log(this.user);
+        this.userService.getUserById(+userId).subscribe({
+          next: (user) => {
+            this.user = user;
+            this.loadUserEmprunts(+userId);
+          },
+          error: (error) => {
+            console.error('Erreur lors de la récupération des informations de l’utilisateur', error);
           }
-        }, error => {
-          console.error('Erreur lors de la récupération de lutilisateur:', error);
         });
       }
     });
   }
+
+  loadUserEmprunts(id: number): void {
+
+    this.userService.getUserEmprunts(id).subscribe({
+      next: (books) => {
+        this.emprunts = books;
+      },
+      error: (error) => {
+        console.error('Erreur lors de la récupération des emprunts de l’utilisateur', error);
+        // Traitez ici les erreurs, par exemple, en affichant un message d'erreur à l'utilisateur
+      }
+    });
+  }
+
+
+  retournerLivre(empruntId: number): void {
+    this.userService.retournerLivre(empruntId).subscribe({
+      next: (response) => {
+        console.log(response.message);
+        // Mettre à jour le message de confirmation
+        this.confirmationMessage = 'Le livre a été retourné avec succès.';
+        this.loadUserEmprunts(<number>this.user?.utilisateurId);
+      },
+      error: (error) => {
+        console.error('Erreur lors du retour du livre', error);
+        // Optionnellement, vous pouvez également gérer les erreurs en affichant un message
+        this.confirmationMessage = 'Erreur lors du retour du livre.';
+      }
+    });
+  }
+
 
 }

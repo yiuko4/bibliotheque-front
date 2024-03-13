@@ -1,20 +1,67 @@
-header nav {
-  background-color: #343a40;
-  color: white;
+/* Style général pour le header */
+header {
+  background-color: #343a40; /* Couleur de fond du header */
+  color: white; /* Couleur du texte */
+  padding: 10px 20px; /* Espacement autour du contenu du header */
 }
 
-header nav ul {
-  list-style-type: none;
+nav ul {
+  list-style-type: none; /* Enlève les puces de la liste */
+  padding: 0; /* Enlève le padding par défaut */
+  margin: 0; /* Enlève la marge par défaut */
+  display: flex; /* Affiche les éléments de la liste côte à côte */
+  align-items: center; /* Centre les éléments de la liste verticalement */
+}
+
+nav ul li {
+  margin-right: 20px; /* Espacement entre les éléments de la liste */
+}
+
+nav ul li a {
+  color: white; /* Couleur des liens */
+  text-decoration: none; /* Enlève le soulignement des liens */
+}
+
+nav ul li a:hover {
+  text-decoration: underline; /* Souligne les liens au survol */
+}
+
+/* Style pour la barre de recherche et les résultats */
+.search-container {
+  position: relative; /* Permet de positionner absolument les résultats de recherche par rapport à ce conteneur */
+}
+
+input[type="text"] {
+  padding: 5px;
+  font-size: 16px; /* Taille de la police du champ de saisie */
+  border: none; /* Enlève la bordure */
+  border-radius: 5px; /* Arrondit les coins */
+}
+
+.search-results {
+  position: absolute;
+  background: white;
+  color: black; /* Couleur du texte pour les résultats */
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  top: 100%; /* Positionne les résultats juste en dessous du champ de saisie */
+  left: 0;
+}
+
+.search-results ul {
+  list-style: none;
   padding: 0;
-  cursor: pointer;
+  margin: 0;
 }
 
-header nav ul li {
-  display: inline;
-  margin-right: 20px;
+.search-results ul li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
 }
 
-header nav ul li a {
-  color: white;
-  text-decoration: none;
+.search-results ul li:hover {
+  background-color: #f0f0f0;
 }

@@ -3,9 +3,19 @@
     <ul>
       <li><a routerLink="/home">Accueil</a></li>
       <li><a routerLink="/create-user">Nouvel Utilisateur</a></li>
-
-      <li><a routerLink="/logout">Déconnexion</a></li>
     </ul>
+
+    <!--
+    <div class="search-container">
+      <input type="text" [(ngModel)]="searchQuery" (input)="searchBooks()" placeholder="Rechercher un livre...">
+      <div class="search-results" *ngIf="books.length > 0">
+        <ul>
+          <li *ngFor="let book of books">
+            <a [routerLink]="['/book', book.livreId]">{{ book.titre }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>-->
 
   </nav>
 </header>

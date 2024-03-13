@@ -57,24 +57,26 @@
     <table class="table">
       <thead>
       <tr>
-        <th>ID</th>
         <th>Titre</th>
         <th>Auteur</th>
         <th>Catégorie</th>
         <th>Emplacement</th>
         <th>Etat</th>
         <th>Disponible</th>
+        <th>Afficher</th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let book of filteredBooks">
-        <td>{{ book.livreId }}</td>
+
         <td>{{ book.titre }}</td>
         <td>{{ book.auteurId }}</td>
         <td>{{ book.categorieId }}</td>
         <td>{{ book.emplacement }}</td>
         <td>{{ book.etatId }}</td>
         <td>{{ book.disponibleId }}</td>
+        <a [routerLink]="['/book', book.livreId]" class="btn btn-outline-secondary">{{ "Afficher" }}</a>
+
       </tr>
       </tbody>
     </table>

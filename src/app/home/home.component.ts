@@ -3,6 +3,7 @@ import {NgForOf, NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {BookService} from "../services/books/book.service";
 import {Book} from "../models/book.model";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,8 @@ import {Book} from "../models/book.model";
   imports: [
     NgForOf,
     FormsModule,
-    NgIf
+    NgIf,
+    RouterLink
   ],
   standalone: true
 })

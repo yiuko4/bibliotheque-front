@@ -4,14 +4,16 @@ import {HeaderComponent} from "./header/header.component";
 import {HttpClientModule} from "@angular/common/http";
 import {UserService} from "./services/users/user.service";
 import {BookService} from "./services/books/book.service";
-import {SearchService} from "./services/search/search.service";
+import {AppRoutingModule} from "./app.routes";
+import {BrowserModule} from "@angular/platform-browser";
+import {CommonModule} from "@angular/common";
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, HttpClientModule],
-  providers: [UserService, BookService, SearchService],
+  imports: [RouterOutlet, HeaderComponent, HttpClientModule, CommonModule],
+  providers: [UserService, BookService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
