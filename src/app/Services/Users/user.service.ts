@@ -3,8 +3,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {map, Observable} from 'rxjs';
-import { User } from "../../models/user.model";
-import {Book} from "../../models/book.model";
+import { User } from "../../Models/user.model";
+import {Book} from "../../Models/book.model";
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +24,6 @@ export class UserService {
     );
   }
 
-
   getUserEmprunts(id: number): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.apiUrl}/recupInfoUtilisateur/${id}/emprunts`);
   }
@@ -32,8 +31,6 @@ export class UserService {
   createUser(user: User): Observable<User> {
     return this.http.post<User>(`${this.apiUrl}/creerUtilisateur`, user);
   }
-
-
   // Recherche des utilisateurs par nom
   searchUsersByName(name: string): Observable<User[]> {
     return this.http.get<User[]>(`${this.apiUrl}/rechercherUtilisateurParNom?nom=${name}`);

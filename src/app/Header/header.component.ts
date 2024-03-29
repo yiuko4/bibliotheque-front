@@ -3,8 +3,8 @@
 import { Component } from '@angular/core';
 import { RouterLink } from "@angular/router";
 import {FormsModule} from "@angular/forms";
-import {Book} from "../models/book.model";
-import {BookService} from "../services/books/book.service";
+import {Book} from "../Models/book.model";
+import {BookService} from "../Services/Books/book.service";
 import {NgForOf, NgIf} from "@angular/common"; // Assurez-vous que le chemin est correct
 
 @Component({

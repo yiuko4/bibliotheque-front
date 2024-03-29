@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForOf, NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
-import {BookService} from "../services/books/book.service";
-import {Book} from "../models/book.model";
+import {BookService} from "../Services/Books/book.service";
+import {Book} from "../Models/book.model";
 import {RouterLink} from "@angular/router";
 
 @Component({

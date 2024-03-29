@@ -1,5 +1,5 @@
 export interface Book {
-  [key: string]: any; // Ajoute cette ligne
+  [key: string]: any;
   livreId: number;
   auteurId: number;
   categorieId: number;

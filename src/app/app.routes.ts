@@ -2,11 +2,11 @@
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { UserComponent } from './user/user.component';
-import {LoginComponent} from "./login/login.component";
-import {BookComponent} from "./book/book.component";
-import {CreateUserComponent} from "./create-user/create-user.component";
+import { HomeComponent } from './Home/home.component';
+import { UserComponent } from './User/user.component';
+import {LoginComponent} from "./Login/login.component";
+import {BookComponent} from "./Book/book.component";
+import {CreateUserComponent} from "./CreateUser/createUser.component";
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirigez la racine vers /home

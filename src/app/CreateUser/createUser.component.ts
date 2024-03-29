@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {User} from "../models/user.model";
-import {UserService} from "../services/users/user.service";
+import {User} from "../Models/user.model";
+import {UserService} from "../Services/Users/user.service";
 import {FormsModule} from "@angular/forms";
 import {NgIf} from "@angular/common";
 
@@ -11,8 +11,8 @@ import {NgIf} from "@angular/common";
     FormsModule,
     NgIf
   ],
-  templateUrl: './create-user.component.html',
-  styleUrl: './create-user.component.css'
+  templateUrl: './createUser.component.html',
+  styleUrl: './createUser.component.css'
 })
 export class CreateUserComponent {
   user: User = {

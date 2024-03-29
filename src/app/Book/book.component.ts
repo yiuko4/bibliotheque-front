@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Book } from "../models/book.model";
-import { BookService } from "../services/books/book.service";
+import { Book } from "../Models/book.model";
+import { BookService } from "../Services/Books/book.service";
 import {NgForOf, NgIf} from "@angular/common";
-import {UserService} from "../services/users/user.service";
+import {UserService} from "../Services/Users/user.service";
 import {FormsModule} from "@angular/forms";
-import {User} from "../models/user.model";
+import {User} from "../Models/user.model";
 
 @Component({
   selector: 'app-book',

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { User } from "../models/user.model";
-import { UserService } from "../services/users/user.service";
+import { User } from "../Models/user.model";
+import { UserService } from "../Services/Users/user.service";
 import {DatePipe, NgForOf, NgIf} from "@angular/common";
-import {Book} from "../models/book.model";
+import {Book} from "../Models/book.model";
 
 @Component({
   selector: 'app-user',

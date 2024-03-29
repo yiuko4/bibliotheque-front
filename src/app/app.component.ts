@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {HeaderComponent} from "./header/header.component";
+import {HeaderComponent} from "./Header/header.component";
 import {HttpClientModule} from "@angular/common/http";
-import {UserService} from "./services/users/user.service";
-import {BookService} from "./services/books/book.service";
+import {UserService} from "./Services/Users/user.service";
+import {BookService} from "./Services/Books/book.service";
 import {AppRoutingModule} from "./app.routes";
 import {BrowserModule} from "@angular/platform-browser";
 import {CommonModule} from "@angular/common";
